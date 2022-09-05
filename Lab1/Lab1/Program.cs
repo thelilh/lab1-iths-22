@@ -5,7 +5,7 @@ Skapat av Hannah Karlsson för ITHS .NET 22
 Console.WriteLine("Skriv in en sträng med siffror och bokstäver (för exempel, skriv 'exempel'): ");
 var delStrang = Console.ReadLine() ?? "";
 if (delStrang == "example" || delStrang == "exempel" || delStrang == string.Empty) {
-    delStrang = "29535123p48723487597645723645"; //Strängen sig själv
+    delStrang = "29535123p48723487597645723645";
 }
 long delTot = 0;
 Console.ResetColor();
@@ -19,10 +19,11 @@ for (int delPos = 0; delPos < delStrang.Length; delPos++) {
         {
             for (int k = delPos; k < delStrang.Length; k++)
             {
-                if(int.TryParse(delStrang[k].ToString(), out int thisShouldBeNumber))
+                if (int.TryParse(delStrang[k].ToString(), out int thisShouldBeNumber))
                 {
                     delLast++;
-                    if (delNum == thisShouldBeNumber && delPos != k) {
+                    if (delNum == thisShouldBeNumber && delPos != k)
+                    {
                         canRun = true;
                         break;
                     }
@@ -32,7 +33,6 @@ for (int delPos = 0; delPos < delStrang.Length; delPos++) {
                     break;
                 }
             }
-
             //Kolla skillnaden mellan delLast och delPos. Om den är mindre eller likamed 2 är det troligen samma nummer (dvs 22).
             var diff = delLast - delPos;
             if (diff <= 2 || !canRun)
@@ -63,7 +63,6 @@ for (int delPos = 0; delPos < delStrang.Length; delPos++) {
         Console.Write("\n"); //Gör en ny rad.
         break; //Vi är klara, break!
     }
-
 }
 Console.ResetColor(); //Byt färgen till standard färgen för användaren
 Console.WriteLine($"Total = {delTot}"); //Skriv ut det totala.
