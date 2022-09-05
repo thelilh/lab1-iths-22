@@ -7,57 +7,44 @@ var delStrang = Console.ReadLine() ?? "";
 if (delStrang == "example" || delStrang == "exempel" || delStrang == string.Empty) {
     delStrang = "29535123p48723487597645723645";
 }
-long delTot = 0;
+var delTot = 0L;
 Console.ResetColor();
-for (int delPos = 0; delPos < delStrang.Length; delPos++) {
-    int delLast = delPos;
+for (var delPos = 0; delPos < delStrang.Length; delPos++) {
+    var delLast = delPos;
     var canRun = false;
-    while (true)
-    {
+    while (true) {
         //Denna del av koden gör så att vi skippar över alla nummer som vi inte vill ha
-        if (int.TryParse(delStrang[delPos].ToString(), out int delNum))
-        {
-            for (int k = delPos; k < delStrang.Length; k++)
-            {
-                if (int.TryParse(delStrang[k].ToString(), out int thisShouldBeNumber))
-                {
+        if (int.TryParse(delStrang[delPos].ToString(), out var delNum)) {
+            for (var k = delPos; k < delStrang.Length; k++) {
+                if (int.TryParse(delStrang[k].ToString(), out var delStrangNum) && !canRun) {
                     delLast++;
-                    if (delNum == thisShouldBeNumber && delPos != k)
-                    {
+                    if (delNum == delStrangNum && delPos != k) {
                         canRun = true;
-                        break;
                     }
                 }
-                else
-                {
+                else {
                     break;
                 }
             }
             //Kolla skillnaden mellan delLast och delPos. Om den är mindre eller likamed 2 är det troligen samma nummer (dvs 22).
             var diff = delLast - delPos;
-            if (diff <= 2 || !canRun)
-            {
+            if (diff <= 2 || !canRun) {
                 break;
             }
         }
-        else
-        {
+        else {
             break;
         }
-        for (int i = 0; i < delStrang.Length; i++)
-        {
-            if (i >= delPos && i < delLast)
-            {
+        for (var i = 0; i < delStrang.Length; i++) {
+            if (i >= delPos && i < delLast) {
                 Console.ForegroundColor = ConsoleColor.Red;
             }
-            else
-            {
+            else {
                 Console.ForegroundColor = ConsoleColor.Yellow;
             }
             Console.Write($"{delStrang[i]}");
         }
-        if (long.TryParse(delStrang[delPos..delLast].ToString(), out long delTotOut))
-        {
+        if (long.TryParse(delStrang[delPos..delLast], out long delTotOut)) {
             delTot += delTotOut;
         }
         Console.Write("\n"); //Gör en ny rad.
