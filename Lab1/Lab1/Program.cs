@@ -15,9 +15,9 @@ var delTot = 0L;
 Console.ResetColor();
 //För varje position mellan 0 och längden av texten.
 for (var delPos = 0; delPos < delStrang.Length; delPos++) { 
-    //Sätt sista position till första positionen, då vi är vid nuvarande vid "sista position"
+    //Sätt sista position till första positionen, då vi nuvarande är vid "sista position"
     var delLast = delPos;
-    //Vi måste återställa ifall vi kan köra till nej, då vi ej har kollat det!
+    //Återställa ifall vi kan köra till nej, då vi ej har kollat det!
     var canRun = false;
     while (true) {
         //Är första tecknet en int? Spara int:en som en variabel.
